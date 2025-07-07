@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">ALAINI ARMORY | Elite Tactical Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #c8a951;
+            --dark: #0a0a0a;
+            --light: #f8f8f8;
+            --gray: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s;
+            background-image: url('https://i.imgur.com/76E6F55C-ADF2-4C71-8092-D8BAA8904743.png'); /* Camo image */
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay for readability */
+            min-height: 100vh;
+            filter: none;
+            -webkit-filter: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Language Selector */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            filter: none;
+            -webkit-filter: none;
+        }
+
+        .lang-btn {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            border: 1px solid var(--primary);
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: var(--dark);
+            font-weight: bold;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--dark);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(200, 169, 81, 0.2);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8));
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            min-width: 200px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+
+        /* Technical Data Section */
+        .technical-data-section {
+            padding: 50px 0;
+            background-color: var(--dark);
+            border-bottom: 1px solid rgba(200, 169, 81, 0.2);
+        }
+
+        .technical-data-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+        }
+
+        .tech-data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .tech-data-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: var(--gray);
+            border-radius: 8px;
+            border: 1px solid #333;
+            transition: all 0.3s;
+        }
+
+        .tech-data-item:hover {
+            border-color: var(--primary);
+        }
+
+        .tech-data-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .tech-data-content h3 {
+            margin: 0 0 5px 0;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .tech-data-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+
+        /* Weapon Cards */
+        .weapons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .weapon-card {
+            background-color: var(--gray);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer; /* Make the whole card clickable */
+        }
+
+        .weapon-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            border-color: var(--primary);
+        }
+
+        .weapon-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .weapon-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .weapon-card:hover .weapon-image img {
+            transform: scale(1.1);
+        }
+
+        .weapon-info {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .weapon-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .weapon-specs {
+            margin-bottom: 15px;
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .weapon-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 10px;
+        }
+
+        .weapon-actions {
+            padding: 0 20px 20px;
+            text-align: right;
+        }
+
+        .view-details-btn {
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-details-btn:hover {
+            background-color: #e0bb5b;
+        }
+
+        /* General Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            filter: none;
+            -webkit-filter: none;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--dark);
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid var(--primary);
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.3s ease-out;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--primary);
+            padding-bottom: 10px;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Specific Modal for Weapon Details */
+        #generic-weapon-modal .modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        #generic-weapon-modal .modal-item {
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            transition: all 0.3s;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #generic-weapon-modal .modal-item strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+        #generic-weapon-modal .modal-item span {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        #generic-weapon-modal .modal-item .tech-data-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 0; /* Override default margin */
+            flex-shrink: 0;
+        }
+
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--gray);
+            padding: 50px 0;
+            margin-top: 50px;
+            border-top: 1px solid var(--primary);
+            border-bottom: 1px solid var(--primary);
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(200, 169, 81, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-text {
+            color: #ccc;
+        }
+
+        .contact-text a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            padding: 30px 0;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Floating WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 100;
+            transition: all 0.3s ease;
+            filter: none;
+            -webkit-filter: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        /* RTL adjustments for Arabic */
+        html[dir="rtl"] body {
+            text-align: right;
+            direction: rtl;
+        }
+
+        html[dir="rtl"] .hero-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        html[dir="rtl"] .language-selector {
+            left: unset;
+            right: 20px;
+        }
+
+        html[dir="rtl"] .logo-icon {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+
+        html[dir="rtl"] .weapon-actions {
+            text-align: left;
+        }
+
+        html[dir="rtl"] .contact-icon {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+
+        html[dir="rtl"] .whatsapp-float {
+            right: unset;
+            left: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+    </div>
+
+    <div class="content-wrapper">
+        <header>
+            <div class="container header-container">
+                <a href="#" class="logo">
+                    <i class="fas fa-scorpion logo-icon"></i>
+                    <span class="logo-text">ALAINI ARMORY</span>
+                </a>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title" data-i18n="welcome_to_alaini">Welcome to Alaini Armory</h1>
+                    <p class="hero-subtitle" data-i18n="hero_subtitle_text">The world's finest collection of premium tactical firearms for discerning clients. Each piece in our collection is precision-engineered to meet the highest standards of performance and reliability.</p>
+                </div>
+            </div>
+        </section>
+
+     /*<section class="stats-section">
+    <div class="stats-container">
+        <!-- موديلات حصرية -->
+        <div class="stat-item" data-stat-type="models" data-target="5">
+            <div class="stat-number">0</div>
+            <div class="stat-label" data-i18n="exclusive_models">5 موديل حصري</div>
+        </div>
+        
+        <!-- الدول -->
+        <div class="stat-item" data-stat-type="countries" data-target="10">
+            <div class="stat-number">0</div>
+            <div class="stat-label" data-i18n="countries_served">10 دولة (<strong>الجمهورية اليمنية</strong>)</div>
+        </div>
+        
+        <!-- خبراء معتمدون -->
+        <div class="stat-item" data-stat-type="experts" data-target="2">
+            <div class="stat-number">0</div>
+            <div class="stat-label" data-i18n="certified_experts">2 خبراء معتمدون</div>
+        </div>
+        
+        <!-- جوائز -->
+        <div class="stat-item" data-stat-type="awards" data-target="5">
+            <div class="stat-number">0</div>
+            <div class="stat-label" data-i18n="awards_won">5 جوائز</div>
+        </div>
+    </div>
+</section>
+        <section class="technical-data-section">
+            <div class="container">
+                <h2 data-i18n="technical_data_title">TECHNICAL DATA</h2>
+                <div class="tech-data-grid">
+                    <div class="tech-data-item">
+                        <i class="fas fa-ruler-combined tech-data-icon"></i>
+                        <div class="tech-data-content">
+                            <h3 data-i18n="caliber_label">Caliber</h3>
+                            <p>9x19mm</p>
+                        </div>
+                    </div>
+                    <div class="tech-data-item">
+                        <i class="fas fa-cogs tech-data-icon"></i>
+                        <div class="tech-data-content">
+                            <h3 data-i18n="system_label">System</h3>
+                            <p data-i18n="safe_action_system">Safe Action®</p>
+                        </div>
+                    </div>
+                    <div class="tech-data-item">
+                        <i class="fas fa-grip-lines tech-data-icon"></i> <div class="tech-data-content">
+                            <h3 data-i18n="mag_capacity_label">Mag. Capacity</h3>
+                            <p data-i18n="standard_mag_capacity">Standard: 17</p>
+                            <p data-i18n="optional_mag_capacity">Optional: 19 / 24 / 31 / 33</p>
+                        </div>
+                    </div>
+                    <div class="tech-data-item">
+                        <i class="fas fa-ruler-horizontal tech-data-icon"></i> <div class="tech-data-content">
+                            <h3 data-i18n="barrel_length_label">Barrel Length</h3>
+                            <p>114 mm | 4.49 inch</p>
+                        </div>
+                    </div>
+                    <div class="tech-data-item">
+                        <i class="fas fa-weight-hanging tech-data-icon"></i>
+                        <div class="tech-data-content">
+                            <h3 data-i18n="weight_label">Weight</h3>
+                            <p data-i18n="weight_without_mag">without magazine</p>
+                            <p>630 g | 22.22 oz</p>
+                        </div>
+                    </div>
+                    <div class="tech-data-item">
+                        <i class="fas fa-weight-hanging tech-data-icon"></i>
+                        <div class="tech-data-content">
+                            <h3 data-i18n="weight_label">Weight</h3>
+                            <p data-i18n="weight_with_empty_mag">with empty magazine</p>
+                            <p>708 g | 24.97 oz</p>
+                        </div>
+                    </div>
+                    <div class="tech-data-item">
+                        <i class="fas fa-weight-hanging tech-data-icon"></i>
+                        <div class="tech-data-content">
+                            <h3 data-i18n="weight_label">Weight</h3>
+                            <p data-i18n="weight_with_loaded_mag">with loaded magazine</p>
+                            <p>945 g | 33.33 oz</p>
+                        </div>
+                    </div>
+                    <div class="tech-data-item">
+                        <i class="fas fa-hand-pointer tech-data-icon"></i> <div class="tech-data-content">
+                            <h3 data-i18n="trigger_pull_label">Trigger Pull</h3>
+                            <p>26 N</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 data-i18n="dimension_title" style="margin-top: 60px;">DIMENSION</h2>
+                <div class="tech-data-grid">
+                    <div class="tech-data-item">
+                        <i class="fas fa-arrows-alt-h tech-data-icon"></i>
+                        <div class="tech-data-content">
+                            <h3 data-i18n="length_overall">Length (Overall)**</h3>
+                            <p>202 mm | 7.95 inch</p>
+                        </div>
+                    </div>
+                    <div class="tech-data-item">
+                        <i class="fas fa-arrows-alt-h tech-data-icon"></i>
+                        <div class="tech-data-content">
+                            <h3 data-i18n="slide_length">Slide Length</h3>
+                            <p>186 mm | 7.32 inch</p>
+                        </div>
+                    </div>
+                    <div class="tech-data-item">
+                        <i class="fas fa-arrows-alt-h tech-data-icon"></i>
+                        <div class="tech-data-content">
+                            <h3 data-i18n="width_overall">Width (Overall)</h3>
+                            <p>34 mm | 1.34 inch</p>
+                        </div>
+                    </div>
+                    <div class="tech-data-item">
+                        <i class="fas fa-arrows-alt-h tech-data-icon"></i>
+                        <div class="tech-data-content">
+                            <h3 data-i18n="slide_width">Slide Width</h3>
+                            <p>25.5 mm | 1.00 inch</p>
+                        </div>
+                    </div>
+                    <div class="tech-data-item">
+                        <i class="fas fa-arrows-alt-v tech-data-icon"></i>
+                        <div class="tech-data-content">
+                            <h3 data-i18n="height_incl_mag">Height incl.Mag.</h3>
+                            <p>139 mm | 5.47 inch</p>
+                        </div>
+                    </div>
+                    <div class="tech-data-item">
+                        <i class="fas fa-eye tech-data-icon"></i>
+                        <div class="tech-data-content">
+                            <h3 data-i18n="line_of_sight_polymer">Line of Sight (Polymer)</h3>
+                            <p>165 mm | 6.50 inch</p>
+                        </div>
+                    </div>
+                    <div class="tech-data-item">
+                        <i class="fas fa-eye tech-data-icon"></i>
+                        <div class="tech-data-content">
+                            <h3 data-i18n="line_of_sight_steel">Line of Sight (Steel)</h3>
+                            <p>164 mm | 6.46 inch</p>
+                        </div>
+                    </div>
+                    <div class="tech-data-item">
+                        <i class="fas fa-hand-pointer tech-data-icon"></i> <div class="tech-data-content">
+                            <h3 data-i18n="trigger_distance">Trigger Distance**</h3>
+                            <p>70 mm | 2.76 inch</p>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size: 0.85rem; color: #777; margin-top: 30px;" data-i18n="glock_note1"></p>
+                <p style="font-size: 0.85rem; color: #777;" data-i18n="glock_note2"></p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="weapons-grid">
+                </div>
+        </div>
+
+        <section class="contact-section">
+            <div class="container contact-container">
+                <div class="contact-info">
+                    <h2 class="contact-title" data-i18n="contact_us">Contact Us</h2>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-text">
+                                <p data-i18n="address">123 Tactical Lane, Elite City, ALAINI</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="contact-text">
+                                <p data-i18n="phone">Phone: <a href="tel:+967777136004">+1 (234) 567-890</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-text">
+                                <p data-i18n="email">Email: <a href="mailto:info@alainiarmory.com">info@alainiarmory.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p data-i18n="copyright">&copy; 2025 ALAINI ARMORY. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="generic-weapon-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title"></h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="weapon-modal-image-container" style="text-align: center; margin-bottom: 20px;">
+                    <img id="weapon-modal-image" src="" alt="Weapon Image" style="max-width: 100%; height: auto; border-radius: 4px;">
+                </div>
+                <p id="weapon-modal-description" style="margin-bottom: 20px; color: #ccc;"></p>
+
+                <h3 data-i18n="technical_data_title" style="color: var(--primary); margin-bottom: 15px;">TECHNICAL DATA</h3>
+                <div class="modal-grid" id="weapon-modal-specs-grid">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="https://wa.me/+967777136004" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        const translations = {
+            en: {
+                page_title: "ALAINI ARMORY | Elite Tactical Solutions",
+                welcome_to_alaini: "Welcome to Alaini Armory",
+                hero_subtitle_text: "The world's finest collection of premium tactical firearms for discerning clients. Each piece in our collection is precision-engineered to meet the highest standards of performance and reliability.",
+                exclusive_models: "EXCLUSIVE MODELS",
+                countries_served: "COUNTRIES SERVED",
+                certified_experts: "CERTIFIED EXPERTS",
+                awards_won: "AWARDS WON",
+                view_details: "View Details",
+                contact_us: "Contact Us",
+                address: "123 Tactical Lane, Elite City, ALAINI",
+                phone: "Phone: <a href='tel:+967777136004'>+967777136004</a>",
+                email: "Email: <a href='mailto:mohmmedalaini383@gmail.com'>mohmmedalaini383@gmail.com</a>",
+                copyright: "&copy; 2025 ALAINI ARMORY. All rights reserved.",
+                weapon_details_title: "Weapon Details",
+                no_detailed_info: "No detailed information available for this weapon yet.",
+                technical_data_title: "TECHNICAL DATA",
+                caliber_label: "Caliber",
+                system_label: "System",
+                safe_action_system: "Safe Action®",
+                mag_capacity_label: "Mag. Capacity",
+                standard_mag_capacity: "Standard: 17",
+                optional_mag_capacity: "Optional: 19 / 24 / 31 / 33",
+                barrel_length_label: "Barrel Length",
+                weight_label: "Weight",
+                weight_without_mag: "without magazine",
+                weight_with_empty_mag: "with empty magazine",
+                weight_with_loaded_mag: "with loaded magazine",
+                trigger_pull_label: "Trigger Pull",
+                dimension_title: "DIMENSION",
+                length_overall: "Length (Overall)**",
+                slide_length: "Slide Length",
+                width_overall: "Width (Overall)",
+                slide_width: "Slide Width",
+                height_incl_mag: "Height incl.Mag.",
+                line_of_sight_polymer: "Line of Sight (Polymer)",
+                line_of_sight_steel: "Line of Sight (Steel)",
+                trigger_distance: "Trigger Distance**",
+                glock_note1: "**FOR GENERATION5 MODELS: Check out the Glock tool and latest technology links for more in-depth back-up.",
+                glock_note2: "Technical data are rounded and do not reflect tolerances. They may be altered without prior notification. Technical data are only for reference.",
+
+
+                // Weapon data specific translation keys (used by weaponData object)
+                glock17_name: "Glock 17 Gen 5",
+                glock17_price: "$600",
+                glock17_description: "The new frame design of the GLOCK 17 Gen5 removed the finger grooves for more versatility but still allows to easily customize its grip by using the different back straps. A flared mag-well and a cutout at the front of the frame give the user more speed during reloading when fractions of a second matter. A reversible enlarged magazine catch, changeable at user level as well as the ambidextrous slide stop lever accommodate left and right-handed operators. The rifling and the crown of the barrel were slightly modified for increased precision.",
+                
+
+                sigsauerp226_name: "Sig Sauer P226 Legion",
+                sigsauerp226_price: "$1,299",
+                sigsauerp226_description: "The LEGION P226 is a full-size, DA/SA pistol, delivering unmatched performance and a host of enhanced features.",
+
+                colt1911_name: "Colt 1911 Government",
+                colt1911_price: "$1,099",
+                colt1911_description: "The legend of American firearms. Iconic .45 ACP with single-action trigger. Series 70 design with forged steel frame. Timeless reliability, combat-proven.",
+
+                hkusptactical_name: "HK USP Tactical",
+                hkusptactical_price: "$1,199",
+                hkusptactical_description: "Engineered for special operations. Features adjustable trigger and O-ring barrel. Threaded barrel (suppressor-ready) with recoil reduction system for extreme durability.",
+
+                beretta92fs_name: "Beretta 92FS",
+                beretta92fs_price: "$699",
+                beretta92fs_description: "The Beretta 92FS is a semi-automatic pistol, adopted by the U.S. military as the M9. It is known for its open slide design and reliable feeding.",
+
+                fn509tactical_name: "FN 509 Tactical",
+                fn509tactical_price: "$999",
+                fn509tactical_description: "The FN 509 Tactical is an extension of the FN 509 family, offering a threaded barrel, suppressor-height sights, and an optics-ready slide.",
+
+                cz75sp01_name: "CZ 75 SP-01 Shadow",
+                cz75sp01_price: "$1,099",
+                cz75sp01_description: "The CZ 75 SP-01 Shadow is a competition-ready pistol with a smooth trigger pull, extended magazine, and fiber optic front sight.",
+
+                springfieldxdm_name: "Springfield XD-M Elite",
+                springfieldxdm_price: "$699",
+                springfieldxdm_description: "The Springfield XD-M Elite is engineered for performance, featuring an improved slide and frame, a Match Enhanced Trigger Assembly (META™), and removable magwell.",
+
+                waltherppks_name: "Walther PPK/S",
+                waltherppks_price: "$799",
+                waltherppks_description: "The Walther PPK/S is a classic compact pistol, known for its elegant design, reliable performance, and iconic status.",
+
+                sw686_name: "S&W Model 686",
+                sw686_price: "$899",
+                sw686_description: "The Smith & Wesson Model 686 is a powerful .357 Magnum revolver, offering exceptional accuracy and reliability for both sport and defense.",
+
+                deserteagle50_name: "Desert Eagle .50",
+                deserteagle50_price: "$1,999",
+                deserteagle50_description: "The Desert Eagle .50 AE is an iconic gas-operated, semi-automatic pistol known for its massive caliber and imposing presence.",
+
+                hk416a5_name: "HK416 A5",
+                hk416a5_price: "$3,299",
+                hk416a5_description: "The HK416 A5 is a highly advanced assault rifle, a refined version of the popular HK416, used by military and special forces worldwide.",
+
+                fnscar17s_name: "FN SCAR 17S",
+                fnscar17s_price: "$3,699",
+                fnscar17s_description: "The FN SCAR 17S is a gas-operated, short-stroke piston rifle chambered in 7.62x51mm NATO, known for its modularity and robust design.",
+
+                benellim4_name: "Benelli M4",
+                benellim4_price: "$1,899",
+                benellim4_description: "The Benelli M4 is a gas-operated semi-automatic shotgun, adopted by the U.S. Marine Corps, renowned for its reliability and performance.",
+
+                barrettm82a1_name: "Barrett M82A1",
+                barrettm82a1_price: "$8,999",
+                barrettm82a1_description: "The Barrett M82A1 is a recoil-operated, semi-automatic anti-materiel rifle, famous for its .50 BMG caliber and long-range capabilities.",
+
+                aiaxmc_name: "AI AXMC",
+                aiaxmc_price: "$7,999",
+                aiaxmc_description: "The Accuracy International AXMC is a multi-caliber bolt-action sniper rifle, designed for extreme accuracy and versatility.",
+            },
+            ar: {
+                page_title: "العليني أرموري | حلول تكتيكية نخبوية",
+                welcome_to_alaini: "مرحباً بكم في العليني أرموري",
+                hero_subtitle_text: "أفضل مجموعة في العالم من الأسلحة النارية التكتيكية الفاخرة للعملاء المميزين. كل قطعة في مجموعتنا مصممة بدقة لتلبية أعلى معايير الأداء والموثوقية.",
+                exclusive_models: "موديلات حصرية",
+                countries_served: "دول تم خدمتها",
+                certified_experts: "خبراء معتمدون",
+                awards_won: "جوائز فاز بها",
+                view_details: "عرض التفاصيل",
+                contact_us: "اتصل بنا",
+                address: "123 شارع التكتيك، مدينة النخبة، العليني",
+                phone: "هاتف: <a href='tel:+967777136004'>+967777136004</a>",
+                email: "بريد إلكتروني: <a href='mailto:mohmmedalaini383@gmail.com'>mohmmedalaini383@gmail.com</a>",
+                copyright: "&copy; 2025 العليني أرموري. جميع الحقوق محفوظة.",
+                weapon_details_title: "تفاصيل السلاح",
+                no_detailed_info: "لا توجد معلومات تفصيلية متاحة لهذا السلاح بعد.",
+                technical_data_title: "البيانات الفنية",
+                caliber_label: "العيار",
+                system_label: "النظام",
+                safe_action_system: "Safe Action®",
+                mag_capacity_label: "سعة المخزن",
+                standard_mag_capacity: "قياسي: 17",
+                optional_mag_capacity: "اختياري: 19 / 24 / 31 / 33",
+                barrel_length_label: "طول الماسورة",
+                weight_label: "الوزن",
+                weight_without_mag: "بدون مخزن",
+                weight_with_empty_mag: "مع مخزن فارغ",
+                weight_with_loaded_mag: "مع مخزن ممتلئ",
+                trigger_pull_label: "سحب الزناد",
+                dimension_title: "الأبعاد",
+                length_overall: "الطول الكلي)**",
+                slide_length: "طول الشريحة",
+                width_overall: "العرض الكلي",
+                slide_width: "عرض الشريحة",
+                height_incl_mag: "الارتفاع شامل المخزن.",
+                line_of_sight_polymer: "خط الرؤية (بوليمر)",
+                line_of_sight_steel: "خط الرؤية (فولاذ)",
+                trigger_distance: "مسافة الزناد)**",
+                glock_note1: "**لموديلات الجيل الخامس: تحقق من رابط أداة Glock وأحدث التقنيات للحصول على معلومات احتياطية أكثر تفصيلاً.",
+                glock_note2: "البيانات الفنية مقربة ولا تعكس التفاوتات. قد يتم تغييرها دون إشعار مسبق. البيانات الفنية هي للمرجعية فقط.",
+
+                // Weapon data specific translation keys (used by weaponData object)
+                glock17_name: "جلوك 17 الجيل 5",
+                glock17_price: "599 دولار",
+                glock17_description: "تصميم الإطار الجديد لـ GLOCK 17 Gen5 أزال أخاديد الأصابع لمزيد من التنوع ولكنه لا يزال يسمح بتخصيص قبضته بسهولة باستخدام الأشرطة الخلفية المختلفة. يوفر فتحة مخزن متسعة وقص في الجزء الأمامي من الإطار للمستخدم سرعة أكبر أثناء إعادة التحميل عندما تكون أجزاء الثانية مهمة. يتكيف قفل المخزن الموسع القابل للعكس، والذي يمكن تغييره على مستوى المستخدم، بالإضافة إلى رافعة إيقاف الشريحة ذات اليدين، مع المشغلين اليد اليمنى واليسرى. تم تعديل تجويف وتاج الماسورة قليلاً لزيادة الدقة.",
+
+                sigsauerp226_name: "سيج ساوير بي 226 ليجن",
+                sigsauerp226_price: "1,299 دولار",
+                sigsauerp226_description: "LEGION P226 هو مسدس بالحجم الكامل، يعمل بنظام DA/SA، يقدم أداءً لا مثيل له ومجموعة من الميزات المحسّنة.",
+
+                colt1911_name: "كولت 1911 الحكومة",
+                colt1911_price: "1,099 دولار",
+                colt1911_description: "موديل كولت 1911 الحكومي هو المسدس الأمريكي الأكثر شهرة، معروف بموثوقيته وقوته التوقفية بعيار .45 ACP.",
+
+                hkusptactical_name: "اتش كي يو اس بي تكتيكال",
+                hkusptactical_price: "1,199 دولار",
+                hkusptactical_description: "تم تصميم مسدس USP Tactical للمستخدمين الذين يحتاجون إلى المسدس الأكثر تنوعًا ودقة للعمليات الخاصة. يتميز بمسدس زناد قابل للتعديل وماسورة ملولبة.",
+
+                beretta92fs_name: "بيريتا 92 اف اس",
+                beretta92fs_price: "699 دولار",
+                beretta92fs_description: "بيريتا 92FS هو مسدس شبه آلي، اعتمدته القوات المسلحة الأمريكية باسم M9. يُعرف بتصميمه المفتوح وموثوقيته في التلقيم.",
+
+                fn509tactical_name: "اف ان 509 تكتيكال",
+                fn509tactical_price: "999 دولار",
+                fn509tactical_description: "FN 509 Tactical هو امتداد لعائلة FN 509، ويقدم ماسورة ملولبة، ومناظير بارتفاع كافٍ للملحقات، وشريحة جاهزة للبصريات.",
+
+                cz75sp01_name: "سي زي 75 اس بي-01 شادو",
+                cz75sp01_price: "1,099 دولار",
+                cz75sp01_description: "CZ 75 SP-01 Shadow هو مسدس جاهز للمنافسة بمسدس زناد ناعم، ومخزن ممتد، ومناظر أمامية من الألياف الضوئية.",
+
+                springfieldxdm_name: "سبرينغفيلد اكس دي-ام اليت",
+                springfieldxdm_price: "699 دولار",
+                springfieldxdm_description: "تم تصميم سبرينغفيلد XD-M Elite للأداء، ويتميز بشريحة وإطار محسّنين، وتجميع زناد محسن للمباريات (META™)، وفتحة مخزن قابلة للإزالة.",
+
+                waltherppks_name: "والتر بي بي كيه/اس",
+                waltherppks_price: "799 دولار",
+                waltherppks_description: "والتر PPK/S هو مسدس كلاسيكي مدمج، معروف بتصميمه الأنيق وأدائه الموثوق به ومكانته الأيقونية.",
+
+                sw686_name: "اس اند دبليو موديل 686",
+                sw686_price: "899 دولار",
+                sw686_description: "سميث آند ويسون موديل 686 هو مسدس دوّار قوي بعيار .357 Magnum، يقدم دقة وموثوقية استثنائيتين للرياضة والدفاع.",
+
+                deserteagle50_name: "ديزرت إيجل .50",
+                deserteagle50_price: "1,999 دولار",
+                deserteagle50_description: "ديزرت إيجل .50 AE هو مسدس نصف آلي يعمل بالغاز ومشهور بعياره الهائل وحضوره المهيب.",
+
+                hk416a5_name: "اتش كي 416 اي 5",
+                hk416a5_price: "3,299 دولار",
+                hk416a5_description: "HK416 A5 هو بندقية هجومية متطورة للغاية، نسخة محسنة من HK416 الشهيرة، تستخدمها القوات العسكرية والخاصة في جميع أنحاء العالم.",
+
+                fnscar17s_name: "اف ان سكار 17 اس",
+                fnscar17s_price: "3,699 دولار",
+                fnscar17s_description: "FN SCAR 17S هي بندقية تعمل بالغاز، ذات مكبس قصير الشوط بعيار 7.62x51mm NATO، معروفة بمرونتها وتصميمها القوي.",
+
+                benellim4_name: "بينيلي ام 4",
+                benellim4_price: "1,899 دولار",
+                benellim4_description: "بينيلي M4 هي بندقية نصف آلية تعمل بالغاز، اعتمدتها مشاة البحرية الأمريكية، معروفة بموثوقيتها وأدائها.",
+
+                barrettm82a1_name: "باريت ام 82 اي 1",
+                barrettm82a1_price: "8,999 دولار",
+                barrettm82a1_description: "باريت M82A1 هي بندقية مضادة للمواد تعمل بالارتداد، شبه آلية، مشهورة بعيار .50 BMG وقدراتها على المدى الطويل.",
+
+                aiaxmc_name: "اي اي اكس ام سي",
+                aiaxmc_price: "7,999 دولار",
+                aiaxmc_description: "Accuracy International AXMC هي بندقية قنص متعددة العيارات تعمل بمسدس، مصممة للدقة القصوى والتنوع.",
+            }
+        };
+
+        const weaponData = {
+            glock17: {
+                name_key: "glock17_name",
+                price_key: "glock17_price",
+                description_key: "glock17_description",
+                image: "https://media.istockphoto.com/id/1180387778/photo/isolated-picture-of-a-glock-17-pistol-on-white-background.jpg?s=612x612&w=0&k=20&c=PX2WWVxrz9D-rsBNNKopSmggg3f8d3qB7gNMHcZOdnU=", // Placeholder image, replace with actual
+                detailed_specs: {
+                    caliber: { value: "9mm", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "17+1 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "4.49 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "24.7 oz (without mag)", icon: "fas fa-weight-hanging" },
+                    overall_length: { value: "7.95 inch", icon: "fas fa-arrows-alt-h" },
+                    slide_width: { value: "1.00 inch", icon: "fas fa-arrows-alt-h" },
+                    height_incl_mag: { value: "5.47 inch", icon: "fas fa-arrows-alt-v" },
+                    trigger_pull: { value: "26 N", icon: "fas fa-hand-pointer" }
+                }
+            },
+            sigsauerp226: {
+                name_key: "sigsauerp226_name",
+                price_key: "sigsauerp226_price",
+                description_key: "sigsauerp226_description",
+                image: "https://www.pewpewtactical.com/wp-content/uploads/2019/03/Sig-Sauer-Legion-P226-1024x682.jpg", // Placeholder image, replace with actual
+                detailed_specs: {
+                    caliber: { value: "9mm", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "15+1 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "4.4 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "34 oz", icon: "fas fa-weight-hanging" },
+                    overall_length: { value: "7.7 inch", icon: "fas fa-arrows-alt-h" },
+                    height: { value: "5.5 inch", icon: "fas fa-arrows-alt-v" },
+                    width: { value: "1.5 inch", icon: "fas fa-arrows-alt-h" },
+                }
+            },
+            colt1911: {
+                name_key: "colt1911_name",
+                price_key: "colt1911_price",
+                description_key: "colt1911_description",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb2C4J8dffPqWhOzpu6n2TMizRYJxan1hBBA&s", // Placeholder image, replace with actual
+                detailed_specs: {
+                    caliber: { value: ".45 ACP", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "7+1 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "5 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "38 oz", icon: "fas fa-weight-hanging" },
+                    overall_length: { value: "8.5 inch", icon: "fas fa-arrows-alt-h" }
+                }
+            },
+            hkusptactical: {
+                name_key: "hkusptactical_name",
+                price_key: "hkusptactical_price",
+                description_key: "hkusptactical_description",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTagxUwneDShkw6qs1bsSzcOxQlUqmqK776fw&s", // Placeholder image, replace with actual
+                detailed_specs: {
+                    caliber: { value: ".45 ACP", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "12+1 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "4.9 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "31 oz", icon: "fas fa-weight-hanging" }
+                }
+            },
+            beretta92fs: {
+                name_key: "beretta92fs_name",
+                price_key: "beretta92fs_price",
+                description_key: "beretta92fs_description",
+                image: "https://media.istockphoto.com/id/532627787/photo/beretta-m9-gun-copy-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=zsO3Q-kQ86b19LKvCjB4-akbf5KCoHDZA8sSFhNlDos=", // Placeholder image, replace with actual
+                detailed_specs: {
+                    caliber: { value: "9mm", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "15+1 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "4.9 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "33.3 oz", icon: "fas fa-weight-hanging" }
+                }
+            },
+            fn509tactical: {
+                name_key: "fn509tactical_name",
+                price_key: "fn509tactical_price",
+                description_key: "fn509tactical_description",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTvsccZ73-fwiuhojauujh108syS_nc06mMQ&s", // Placeholder image, replace with actual
+                detailed_specs: {
+                    caliber: { value: "9mm", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "17+1 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "4.5 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "27.1 oz", icon: "fas fa-weight-hanging" }
+                }
+            },
+            cz75sp01: {
+                name_key: "cz75sp01_name",
+                price_key: "cz75sp01_price",
+                description_key: "cz75sp01_description",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTruHvol2EFjzp_xup7zFejxi5JfSSzFoKFBw&s", // Placeholder image
+                detailed_specs: {
+                    caliber: { value: "9mm", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "18+1 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "4.6 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "41.3 oz", icon: "fas fa-weight-hanging" }
+                }
+            },
+            springfieldxdm: {
+                name_key: "springfieldxdm_name",
+                price_key: "springfieldxdm_price",
+                description_key: "springfieldxdm_description",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaY-cWKsHWfd9hEhHFuO4pKw2Wh8KazfEzTw&s", // Placeholder image
+                detailed_specs: {
+                    caliber: { value: "9mm", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "19+1 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "4.5 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "30 oz", icon: "fas fa-weight-hanging" }
+                }
+            },
+            waltherppks: {
+                name_key: "waltherppks_name",
+                price_key: "waltherppks_price",
+                description_key: "waltherppks_description",
+                image: "https://cdn.amplifi.pattern.com/26ac56fa-34c3-44fd-a0b4-cbf7a292d572", // Placeholder image
+                detailed_specs: {
+                    caliber: { value: ".380 ACP", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "7+1 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "3.3 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "21 oz", icon: "fas fa-weight-hanging" }
+                }
+            },
+            sw686: {
+                name_key: "sw686_name",
+                price_key: "sw686_price",
+                description_key: "sw686_description",
+                image: "https://www.smith-wesson.com/_next/image?url=https%3A%2F%2Fcdn11.bigcommerce.com%2Fs-c7gr8wg3cg%2Fproducts%2F358%2Fimages%2F3974%2F164222-OnWhite-Right__74213.1692388456.1280.1280.png%3Fc%3D1&w=3840&q=90", // Placeholder image
+                detailed_specs: {
+                    caliber: { value: ".357 Magnum", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "6 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "4 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "40 oz", icon: "fas fa-weight-hanging" }
+                }
+            },
+            deserteagle50: {
+                name_key: "deserteagle50_name",
+                price_key: "deserteagle50_price",
+                description_key: "deserteagle50_description",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkeHJKvHtLIRrsKP2kn-Bs5MSl-1SeHerKTg&s", // Placeholder image
+                detailed_specs: {
+                    caliber: { value: ".50 AE", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "7+1 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "6 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "72 oz", icon: "fas fa-weight-hanging" }
+                }
+            },
+            hk416a5: {
+                name_key: "hk416a5_name",
+                price_key: "hk416a5_price",
+                description_key: "hk416a5_description",
+                image: "https://hk-usa.com/wp-content/uploads/2023/09/HK416A5-11in-Right.jpg", // Placeholder image
+                detailed_specs: {
+                    caliber: { value: "5.56 NATO", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "30+1 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "16.5 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "7.7 lbs", icon: "fas fa-weight-hanging" }
+                }
+            },
+            fnscar17s: {
+                name_key: "fnscar17s_name",
+                price_key: "fnscar17s_price",
+                description_key: "fnscar17s_description",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqCUqw2dIOkH7CpfI2OQKpMuXQQhhOnCt_0g&s", // Placeholder image
+                detailed_specs: {
+                    caliber: { value: "7.62 NATO", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "20+1 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "16.2 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "8.0 lbs", icon: "fas fa-weight-hanging" }
+                }
+            },
+            benellim4: {
+                name_key: "benellim4_name",
+                price_key: "benellim4_price",
+                description_key: "benellim4_description",
+                image: "https://shelltactical.com/cdn/shop/articles/Benelli_M4_FAQ_pic.jpg?v=1738079552&width=1100", // Placeholder image
+                detailed_specs: {
+                    caliber: { value: "12 Gauge", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "5+1 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "18.5 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "7.8 lbs", icon: "fas fa-weight-hanging" }
+                }
+            },
+            barrettm82a1: {
+                name_key: "barrettm82a1_name",
+                price_key: "barrettm82a1_price",
+                description_key: "barrettm82a1_description",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ0gTJMre-5LdQXjEAvg-fU5a3fE3JYOkXqg&s", // Placeholder image
+                detailed_specs: {
+                    caliber: { value: ".50 BMG", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "10+1 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "29 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "30.9 lbs", icon: "fas fa-weight-hanging" }
+                }
+            },
+            aiaxmc: {
+                name_key: "aiaxmc_name",
+                price_key: "aiaxmc_price",
+                description_key: "aiaxmc_description",
+                image: "https://www.sportingservices.co.uk/cdn/shop/products/AX308_-1_1024x1024.jpg?v=1479484130", // Placeholder image
+                detailed_specs: {
+                    caliber: { value: "Multi-Caliber", icon: "fas fa-ruler-combined" },
+                    capacity: { value: "5-10 Rounds", icon: "fas fa-grip-lines" },
+                    barrel_length: { value: "20-27 inch", icon: "fas fa-ruler-horizontal" },
+                    weight_empty: { value: "13-15 lbs", icon: "fas fa-weight-hanging" }
+                }
+            }
+        };
+
+
+        let currentLang = 'en';
+
+        // Function to apply translations
+        function applyTranslations() {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    element.innerHTML = translations[currentLang][key];
+                }
+            });
+            document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            document.documentElement.lang = currentLang;
+        }
+
+        // Language buttons event listeners
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                currentLang = button.getAttribute('data-lang');
+                applyTranslations();
+                populateWeaponCards(); // Re-populate to update "View Details" text
+            });
+        });
+
+        // Stats counter animation
+        const statsSection = document.querySelector('.stats-section');
+        let statsAnimated = false;
+
+        function animateStats() {
+            if (statsAnimated) return;
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('.stat-item').forEach(item => {
+                            const target = parseInt(item.getAttribute('data-target'));
+                            const numberElement = item.querySelector('.stat-number');
+                            let currentNumber = 0;
+                            const increment = target / 100; // Adjust for smoother animation
+
+                            const timer = setInterval(() => {
+                                if (currentNumber < target) {
+                                    currentNumber += increment;
+                                    numberElement.textContent = Math.round(currentNumber);
+                                } else {
+                                    numberElement.textContent = target;
+                                    clearInterval(timer);
+                                }
+                            }, 20); // Speed of animation
+
+                        });
+                        statsAnimated = true;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            observer.observe(statsSection);
+        }
+
+
+        // Modals functionality
+        const genericWeaponModal = document.getElementById('generic-weapon-modal');
+        const modalTitle = genericWeaponModal.querySelector('.modal-title');
+        const weaponModalImage = document.getElementById('weapon-modal-image');
+        const weaponModalDescription = document.getElementById('weapon-modal-description');
+        const weaponModalSpecsGrid = document.getElementById('weapon-modal-specs-grid');
+
+        function openWeaponDetailsModal(weaponId) {
+            const weapon = weaponData[weaponId];
+            if (!weapon) {
+                console.error("Weapon data not found for ID:", weaponId);
+                modalTitle.textContent = translations[currentLang].weapon_details_title;
+                weaponModalDescription.innerHTML = translations[currentLang].no_detailed_info;
+                weaponModalImage.style.display = 'none'; // Hide image if no data
+                weaponModalSpecsGrid.innerHTML = ''; // Clear specs
+            } else {
+                modalTitle.textContent = translations[currentLang][weapon.name_key];
+                
+                if (weapon.image) {
+                    weaponModalImage.src = weapon.image;
+                    weaponModalImage.alt = translations[currentLang][weapon.name_key];
+                    weaponModalImage.style.display = 'block';
+                } else {
+                    weaponModalImage.style.display = 'none';
+                }
+
+                weaponModalDescription.innerHTML = translations[currentLang][weapon.description_key] || translations[currentLang].no_detailed_info;
+
+                weaponModalSpecsGrid.innerHTML = ''; // Clear previous specs
+                if (weapon.detailed_specs) {
+                    for (const specKey in weapon.detailed_specs) {
+                        const spec = weapon.detailed_specs[specKey];
+                        const specItem = document.createElement('div');
+                        specItem.classList.add('modal-item');
+                        specItem.innerHTML = `
+                            <i class="${spec.icon || 'fas fa-info-circle'} tech-data-icon"></i>
+                            <div>
+                                <strong>${specKey.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase())}:</strong>
+                                <span>${spec.value}</span>
+                            </div>
+                        `;
+                        weaponModalSpecsGrid.appendChild(specItem);
+                    }
+                }
+            }
+            genericWeaponModal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('active');
+            });
+        }
+
+        document.querySelectorAll('.close-modal').forEach(button => {
+            button.addEventListener('click', closeModal);
+        });
+
+        // Close modal when clicking outside
+        genericWeaponModal.addEventListener('click', (event) => {
+            if (event.target === genericWeaponModal) {
+                closeModal();
+            }
+        });
+
+
+        // Dynamically populate weapon cards
+        const weaponsGrid = document.querySelector('.weapons-grid');
+
+        function populateWeaponCards() {
+            weaponsGrid.innerHTML = ''; // Clear existing cards
+            for (const weaponId in weaponData) {
+                const weapon = weaponData[weaponId];
+                const weaponCard = document.createElement('div');
+                weaponCard.classList.add('weapon-card');
+                weaponCard.setAttribute('data-weapon-id', weaponId); // Add data attribute
+
+                weaponCard.innerHTML = `
+                    <div class="weapon-image">
+                        <img src="${weapon.image}" alt="${translations[currentLang][weapon.name_key]}">
+                    </div>
+                    <div class="weapon-info">
+                        <h3 class="weapon-name">${translations[currentLang][weapon.name_key]}</h3>
+                        <p class="weapon-specs">${(translations[currentLang][`${weaponId}_specs`] || '').split('<br>').map(s => `<span>${s}</span>`).join('<br>')}</p>
+                        <p class="weapon-price">${translations[currentLang][weapon.price_key]}</p>
+                    </div>
+                    <div class="weapon-actions">
+                        <button class="view-details-btn" data-i18n="view_details" data-weapon-id="${weaponId}">View Details</button>
+                    </div>
+                `;
+                weaponsGrid.appendChild(weaponCard);
+            }
+
+            // Attach event listeners to newly created buttons and cards
+            weaponsGrid.querySelectorAll('.view-details-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const id = event.target.getAttribute('data-weapon-id');
+                    openWeaponDetailsModal(id);
+                    event.stopPropagation(); // Prevent card click event from firing
+                });
+            });
+
+            // Make the whole card clickable
+            weaponsGrid.querySelectorAll('.weapon-card').forEach(card => {
+                card.addEventListener('click', (event) => {
+                    if (!event.target.classList.contains('view-details-btn')) { // Don't re-trigger if button clicked
+                        const id = card.getAttribute('data-weapon-id');
+                        openWeaponDetailsModal(id);
+                    }
+                });
+            });
+        }
+
+
+        // Initial calls
+        document.addEventListener('DOMContentLoaded', () => {
+            applyTranslations();
+            animateStats();
+            populateWeaponCards();
+        });
+
+        // Set up Intersection Observer for stats animation
+        if (statsSection) {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateStats();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(statsSection);
+        }
+
+    </script>
+</body>
+</html>
